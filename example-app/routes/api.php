@@ -30,10 +30,10 @@ Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::post('updateCategory', [CategoryController::class, 'updateCategory']);
     Route::post('readCategory', [CategoryController::class, 'readCategory']);
 
-    route::post('insertProduct', [CategoryController::class, 'insertProduct']);
-    Route::post('destroyProduct', [CategoryController::class, 'destroyProduct']);
-    Route::post('updateProduct', [CategoryController::class, 'updateProduct']);
-    Route::post('readProduct', [CategoryController::class, 'readProduct']);
+    route::post('insertProduct', [ProductController::class, 'insertProduct']);
+    Route::post('destroyProduct', [ProductController::class, 'destroyProduct']);
+    Route::post('updateProduct', [ProductController::class, 'updateProduct']);
+    Route::post('readProduct', [ProductController::class, 'readProduct']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

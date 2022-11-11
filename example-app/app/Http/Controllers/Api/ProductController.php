@@ -15,7 +15,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'category' => 'required',
-            'precio' => 'required',
+            'price' => 'required',
             'stock' => 'required',
 
         ]);
@@ -24,7 +24,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->category = $request->category;
-        $product->precio = $request->precio;
+        $product->price = $request->price;
         $product->stock = $request->stock;
         
         $product->save();
@@ -59,10 +59,15 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-        $request->validate(['id' => 'required', 'name' => 'required', 'description' => 'required']);
-            
+        $request->validate(['id' => 'required', 'name' => 'required', 'description' => 'required', 'category' => 'required', 'price' => 'required', 'precio' => 'required', 'stock' => 'required']);
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->category = $request->category;
+        $product->precio = $request->precio;
+        $product->stock = $request->stock;
         $post = Product::updateOrCreate(
-            ['name' => $request->name, 'description' => $request->description],
+            ['name' => $request->name, 'description' => $request->description, 'category' => $request->category, 'price' => $request->price, 'stock' => $request->stock],
             ['id' => $request->id]
         );
         if ($post) {
